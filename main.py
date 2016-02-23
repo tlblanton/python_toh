@@ -61,19 +61,12 @@ A = customStack("A")
 B = customStack("B")
 C = customStack("C")
 
-print A.stack
-
-
-print A.stack
-
-
 rings = input("How many rings are on tower A?\n")
 n = rings
 
 while n:
     A.stack.append(n)
     n -= 1
-
 
 display(A.stack, B.stack, C.stack)
 hanoi(rings, A, B, C)
