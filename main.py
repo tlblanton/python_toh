@@ -2,7 +2,6 @@ import sys
 
 moves = 0
 
-
 def display(aCopy, bCopy, cCopy):
     print '** Move Number: {0}'.format(moves)
     sys.stdout.write("[")
@@ -40,30 +39,42 @@ def display(aCopy, bCopy, cCopy):
 def hanoi(ringNum, start, aux, end):
     global moves
     if ringNum == 1:
-        end.append(start.pop())
+        end.stack.append(start.stack.pop())
         moves += 1
-        display(A, B, C)
+        print("{0} -> {1}").format(start.name, end.name)
+        display(A.stack, B.stack, C.stack)
     else:
         hanoi(ringNum-1, start, end, aux)
-        end.append(start.pop())
+        end.stack.append(start.stack.pop())
+        print("{0} -> {1}").format(start.name, end.name)
         moves += 1
-        display(A, B, C)
+        display(A.stack, B.stack, C.stack)
         hanoi(ringNum-1, aux, start, end)
 
 
-A = []
-B = []
-C = []
+class customStack:
+    def __init__(self, nName):
+        self.name = nName
+        self.stack = []
+
+A = customStack("A")
+B = customStack("B")
+C = customStack("C")
+
+print A.stack
+
+
+print A.stack
 
 
 rings = input("How many rings are on tower A?\n")
 n = rings
 
 while n:
-    A.append(n)
+    A.stack.append(n)
     n -= 1
 
 
-display(A, B, C)
+display(A.stack, B.stack, C.stack)
 hanoi(rings, A, B, C)
 print "Number of moves: {0}".format(moves)
