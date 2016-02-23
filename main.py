@@ -61,7 +61,7 @@ A = customStack("A")
 B = customStack("B")
 C = customStack("C")
 
-rings = input("How many rings are on tower A?\n")
+rings = int(raw_input("How many rings are on tower A?\n"))
 n = rings
 
 while n:
